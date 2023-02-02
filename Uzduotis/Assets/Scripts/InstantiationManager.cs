@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class InstantiationManager : MonoBehaviour
 {
+    public GameObject parent;
     public GameObject obj;
     public List<Vector2> pos = new List<Vector2>();
     public GameObject[] pointObjects = new GameObject[8];
@@ -73,12 +74,13 @@ public class InstantiationManager : MonoBehaviour
         for (int i = 0; i < pos.Count; i++)
         {
             int id = i + 1;
-            Vector3 newPos = new Vector3(viewportRect.xMin  + pos[i].x*4- viewportRect.xMax, Camera.main.pixelHeight - pos[i].y*2, 10);
+            Vector3 newPos = new Vector3(viewportRect.xMin  + pos[i].x*2- viewportRect.xMax, Camera.main.pixelHeight - pos[i].y, 10);
             this.transform.position = Camera.main.ScreenToViewportPoint(newPos);
             GameObject ob_text = obj.transform.GetChild(0).gameObject;
             ob_text.GetComponent<TextMeshPro>().text = id.ToString();
-            GameObject newObj = Instantiate(obj, this.transform.position*5, Quaternion.identity);
+            GameObject newObj = Instantiate(obj, this.transform.position*3* aspectRatio, Quaternion.identity);
             newObj.name = id.ToString();
+            newObj.transform.parent = parent.transform;
         }
         pointObjects = GameObject.FindGameObjectsWithTag("Point");       
     }

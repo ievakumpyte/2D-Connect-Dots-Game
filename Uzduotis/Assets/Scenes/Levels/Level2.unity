@@ -720,6 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db6cbed487af1224cafd9c907ba15e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 1289534503}
   obj: {fileID: 263933169890018777, guid: 60be89eed25288040bc95592122c1e13, type: 3}
   pos: []
   pointObjects: []
